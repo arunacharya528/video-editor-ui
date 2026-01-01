@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+.editor {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #141414;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  padding: 12px 20px;
+  background: #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header h1 {
+  margin: 0;
+  color: #ff6b35;
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.layout {
+  flex: 1;
+  display: flex;
+}
+
+.media-bin {
+  width: 280px;
+  background: #1e1e1e;
+  padding: 15px;
+  border-right: 1px solid #333;
+  overflow-y: auto;
+}
+
+.pool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pool-grid .ant-card-cover video {
+  height: 100px;
+  object-fit: cover;
+  background: #000;
+}
+
+.preview-panel {
+  flex: 1;
+  padding: 20px;
+  background: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.preview-video {
+  max-width: 100%;
+  max-height: 70vh;
+  background: #000;
+  border: 2px solid #333;
+}
+
+.time-display {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.timeline-panel {
+  height: 250px;
+  background: #1f1f1f;
+  border-top: 1px solid #333;
+  position: relative;
+}
+
+.time-ruler {
+  height: 30px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #444;
+  position: relative;
+}
+
+.time-ruler span {
+  position: absolute;
+  top: 8px;
+  font-size: 12px;
+  color: #888;
+  transform: translateX(-50%);
+}
+
+.track {
+  height: 60px;
+  display: flex;
+  border-bottom: 1px solid #333;
+}
+
+.track-label {
+  width: 60px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-right: 1px solid #444;
+}
+
+.track-clips {
+  flex: 1;
+  position: relative;
+  background: repeating-linear-gradient(
+    90deg,
+    #222 0px,
+    #222 19px,
+    #2a2a2a 20px
+  );
+}
+.timeline-clip {
+  position: absolute;
+  height: 50px;
+  background: #1890ff;
+  border: 2px solid #ffd93b;
+  border-radius: 4px;
   color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100px; /* Critical: ensures visibility */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+.timeline-clip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.clip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.timeline-clip:hover {
+  background: #3388ff;
+}
+
+.track.dragging-over {
+  background: rgba(0, 100, 255, 0.2);
+  border: 2px dashed #0066ff;
 }
